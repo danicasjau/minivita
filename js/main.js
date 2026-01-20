@@ -40,7 +40,7 @@ const MAX_SCROLL_PIXELS_DOWN = 500;
 const MAX_SCROLL_PIXELS_UP = 5400;
 const SCROLL_VALUE_CENTERED = 700;
 
-let mobileScrollVelocity = 0;
+let mobileScrollVelocity = 8;
 const MOBILE_SCROLL_FRICTION = 0.94; // closer to 1 = longer glide
 const MOBILE_SCROLL_POWER = 1.2;     // finger strength
 
@@ -786,6 +786,7 @@ setTimeout(() => {
 }, 2000); // 2 seconds delay
 
 animate();
+
 
 
 
