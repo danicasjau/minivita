@@ -82,7 +82,7 @@ if (isMobileOrTablet) {
                     <div class="utilitats-grid">
                         <div class="utilitats-item">
                             <div class="utilitats-image"
-                                style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop');">
+                                style="background-image: url('assets/imatges/fotoLow01.png');">
                             </div>
                             <div class="utilitats-content">
                                 <h3>INTERACCIÓ TOTAL</h3>
@@ -92,7 +92,7 @@ if (isMobileOrTablet) {
                         </div>
                         <div class="utilitats-item">
                             <div class="utilitats-image"
-                                style="background-image: url('https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2574&auto=format&fit=crop'); order: 2;">
+                                style="background-image: url('assets/imatges/fotoLow02.png'); order: 2;">
                             </div>
                             <div class="utilitats-content">
                                 <h3>APLICACIÓ PRÒPIA</h3>
@@ -124,3 +124,4 @@ if (isMobileOrTablet) {
         `;
     });
 }
+
