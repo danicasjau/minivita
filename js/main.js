@@ -430,10 +430,7 @@ function onMove(x, y) {
     const dy = y - startY;
     const threshold = 50;
 
-    if (isMobile && absY > absX) {
-        mobileScrollVelocity += dy * MOBILE_SCROLL_POWER;
-        return;
-    }
+
     
     if (Math.abs(dx) > threshold || Math.abs(dy) > threshold) {
         const isHorizontal = Math.abs(dx) > Math.abs(dy);
@@ -470,6 +467,10 @@ function onMove(x, y) {
 
             // Clamp
             relativeWheelOffset = Math.max(MIN_WHEEL_OFFSET - daddedMinMaxWhell, Math.min(MAX_WHEEL_OFFSET + daddedMinMaxWhell, relativeWheelOffset));
+            if (isMobile && absY > absX) {
+                relativeWheelOffset += dy * MOBILE_SCROLL_POWER;
+                return;
+            }
         }
 
         inputBlocked = true;
@@ -620,27 +621,6 @@ let introPlane = null; // Global reference for opacity animation
 function animate() {
     requestAnimationFrame(animate);
 
-    if (isMobile) {
-        mobileScrollVelocity *= MOBILE_SCROLL_FRICTION;
-    
-        if (Math.abs(mobileScrollVelocity) < 0.05) {
-            mobileScrollVelocity = 0;
-        }
-    
-        relativeWheelOffset += mobileScrollVelocity;
-    
-        // Soft clamp (prevents hard stop)
-        const limit = MAX_WHEEL_OFFSET + daddedMinMaxWhell;
-        if (relativeWheelOffset > limit) {
-            relativeWheelOffset = limit;
-            mobileScrollVelocity *= 0.3; // absorb energy
-        }
-        if (relativeWheelOffset < -limit) {
-            relativeWheelOffset = -limit;
-            mobileScrollVelocity *= 0.3;
-        }
-    }
-    
     time += 0.01;
 
     // Update Shader Uniforms
@@ -786,6 +766,7 @@ setTimeout(() => {
 }, 2000); // 2 seconds delay
 
 animate();
+
 
 
 
