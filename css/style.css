@@ -1,0 +1,328 @@
+@import 'sections.css';
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+#canvas-container {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.view-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 10;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.view-label.visible {
+    opacity: 1;
+}
+
+#label-center .center-image.visible {
+    opacity: 1;
+}
+
+
+/* Optional: Loading overlay */
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    color: #888;
+    z-index: 20;
+}
+
+/* Center Label Specifics */
+/* Center Label Specifics - Overrides View Label */
+#label-center {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100%;
+    height: 100%;
+    transform: none !important;
+    display: block;
+    /* Disable flex container logic on parent */
+    pointer-events: none;
+}
+
+.top-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -120%);
+    /* Start slightly above center */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0;
+    transition: all 2.5s cubic-bezier(0.19, 1, 0.22, 1);
+    /* Soft ease-out */
+    width: 100%;
+}
+
+.bottom-content {
+    position: absolute;
+    top: auto;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 120%);
+    /* Start slightly below center */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 2.5s cubic-bezier(0.19, 1, 0.22, 1);
+    /* Soft ease-out */
+    width: 100%;
+}
+
+/* Animation State: Slide Open */
+#label-center.slide-open .top-content {
+    top: 0;
+    transform: translate(-50%, 30px);
+    /* 40px margin from top */
+}
+
+#label-center.slide-open .bottom-content {
+    bottom: 0;
+    transform: translate(-50%, -30px);
+    /* 40px margin from bottom */
+}
+
+/* Typography & Visuals */
+.title-main {
+    font-size: 4.2rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.5rem;
+    background: linear-gradient(to right, #fff, #aaa, #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    animation: soft-shine 10s ease-in-out infinite;
+}
+
+.arrow-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: inline;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+}
+
+.arrow {
+    font-size: 3rem;
+    /* size of the arrows */
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.2;
+}
+
+.left-arrow {
+    float: left;
+    padding: 10px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.right-arrow {
+    float: right;
+    padding: 10px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes soft-shine {
+    0% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+
+    100% {
+        background-position: 0% center;
+    }
+}
+
+.center-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.center-image img {
+    width: 320px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.subtitle-main {
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    letter-spacing: 0.3rem;
+    color: #ccc;
+    opacity: 0.8;
+}
+
+.footer-spacer {
+    height: 20px;
+}
+
+.footer-main {
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    color: #888;
+    margin: 0;
+    position: relative;
+}
+
+.footer-main::before {
+    content: "";
+    /* Simple line above footer */
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: #444;
+    margin: 0 auto 10px auto;
+}
+
+.highlight {
+    color: #fff;
+    font-weight: 500;
+}
+
+.fadeIn {
+    opacity: 0;
+    animation: fadeIn 4.2s linear forwards;
+}
+
+@keyframes fadeIn {
+    60% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0.50;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#debug-overlay {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #888;
+    z-index: 100;
+    pointer-events: none;
+    letter-spacing: 0.1rem;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+#label-left {
+    text-align: center !important;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#label-right {
+    text-align: center !important;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#label-up {
+    text-align: center !important;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+#label-down {
+    text-align: center !important;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 150vh;
+    width: 100%;
+}
+
+#scroll-container-down {
+    margin-top: 120vh;
+    opacity: 0;
+    animation: fadeIn 4.2s linear forwards;
+    background-color: transparent;
+
+}
+
+
+@media only screen and (max-width: 768px) {
+    #label-down {
+        height: 200vh;
+    }
+
+
+}

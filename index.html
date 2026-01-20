@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Minivita - 3D Viewer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/info-background.css">
+    <link rel="stylesheet" href="css/info-style.css">
+
+    <!-- Import maps polyfill -->
+    <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="canvas-container" class="fadeIn"></div>
+
+    <!-- UI Labels for 6 Views -->
+    <div id="label-center" class="view-label">
+        <div class="top-content">
+            <h1 class="title-main">MINI VITA</h1>
+            <p class="subtitle-main">PRESENTACIÓ D'UN PETIT PERSONATGE VIRTUAL</p>
+        </div>
+        <div class="arrow-container">
+            <div class="arrow left-arrow">&lt;</div>
+            <div class="arrow right-arrow">&gt;</div>
+        </div>
+
+        <div class="bottom-content">
+            <div class="footer-spacer"></div>
+            <p class="footer-main">Projecte de <span class="highlight">Daniel Casadevall Jauhiainen</span></p>
+        </div>
+    </div>
+    <div id="label-back" class="view-label">Enrere</div>
+    <div id="label-left" class="view-label">
+        <div id="scroll-container-left">
+            <h2 class="section-title">EL PROGRÉS</h2>
+            <p class="subtitle-main">MINI VITA ENCARA ÉS UN PRODUCTE EN DESENVOLUPAMENT</p>
+
+            <div class="util-showcase-grid">
+                <!-- Item 1 -->
+                <div class="util-showcase-item" style="background-color: rgba(44, 44, 44, 0.9);">
+                    <video autoplay loop muted playsinline
+                        style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                        <source src="assets/imatges/videoVersio01.mp4" type="video/mp4">
+                    </video>
+                    <div class="util-showcase-overlay">
+                        <h3>VERSIÓ 01</h3>
+                        <p>Funcionament local a temps real, moviment poc estable, memòria no implementada, veu poc
+                            precisa.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="util-showcase-item">
+                    <video autoplay loop muted playsinline
+                        style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                        <source src="assets/imatges/videoVersio02.mp4" type="video/mp4">
+                    </video>
+                    <div class="util-showcase-overlay">
+                        <h3>VERSIÓ 02</h3>
+                        <p>Memòria implementada, veu més precisa, moviment estable. Sense interacció amb l'entorn 3D.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="util-showcase-item" style="background-color: rgba(44, 44, 44, 0.9);">
+                    <div class="util-showcase-overlay">
+                        <h3>VERSIÓ 03 (en un pròxim futur)</h3>
+                        <p>Interacció amb l'entorn 3d, projecció hologràfica i suport de realitat virtual natiu per a
+                            experiències sense límits.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="label-right" class="view-label">
+        <div id="scroll-container-right">
+            <h2 class="section-title">OBJECTIUS</h2>
+            <p class="subtitle-main">Les capacitats de Mini Vita</p>
+
+            <div class="util-showcase-grid">
+                <!-- Item 1 -->
+                <div class="util-showcase-item" style="background-image:  url('assets/imatges/fotoPensament.png')">
+                    <div class="util-showcase-overlay">
+                        <h3>INTEL·LIGÈNCIA</h3>
+                        <p>Personatges amb raonament complex i adaptació contextual en temps real per a entorns
+                            dinàmics.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="util-showcase-item" style="background-image:  url('assets/imatges/fotoHistoria.png')">
+                    <div class="util-showcase-overlay">
+                        <h3>IDENTITAT</h3>
+                        <p>Personatges amb identitat única, records, memòries i aprenentatge continu.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="util-showcase-item" style="background-image:  url('assets/imatges/fotoMoviment.png')">
+                    <div class="util-showcase-overlay">
+                        <h3>MOVIMENT</h3>
+                        <p>Moviment fluid i realista, amb animacions facials i corporals complexes enquadrades amb la
+                            veu i l'espai.</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div id="label-up" class="view-label">
+        <div class="section-content" style="text-align: center;">
+            <h2 class="title-section" style="font-size: 2rem;">MINI VITA</h2>
+            <p class="section-text" style="font-size: 1rem; color: #fff;">Descobrint la potencialitat de l'animació 3D
+                amb les noves tecnologies.</p>
+            <p class="section-text" style="font-size: 1rem; color: #fff;">Daniel Casadevall Jauhiainen</p>
+            <p class="section-text" style="font-size: 1rem; color: #fff;">contact: <a href="#" class="email-link"></a>
+            </p>
+        </div>
+    </div>
+    <div id="label-down" class="view-label">
+        <div id="scroll-container-down">
+            <!-- Animated Background -->
+            <div class="info-content-wrapper">
+                <div class="main-feature-image">
+                    <h1 class="main-feature-title">MINI VITA</h1>
+                    <p class="subtitle-main">La vida atrapada - OBJECTIUS, VISIÓ i TECNOLOGIA.</p>
+                </div>
+                <section class="info-section">
+                    <h2>Descripció</h2>
+                    <p><br><br>
+                        Després de complir 35 anys, Tom es desperta en una capsa blanca, una habitació tancada, on només
+                        hi ha una veu: La teva.<br><br>
+                        Tom recorda tota la seva vida i vol escapar, tornar amb la seva família, però no pot. <br><br>
+                        La seva existència, les seves memòries i emocions, només existeixen dins l’ordinador. <br><br>
+                        Fora de la capsa, Tom no és ningú, no existeix, no pot existir. Però ell creu que sí, i farà
+                        tot el possible per sortir.<br><br>
+                        Pobre Tom.
+                        <br><br>
+                        Mini Vita és un personatge interactiu amb memòria vectoritzada, completament local i optimitzat
+                        per funcionar en un ordinador domèstic modern.
+                    </p>
+                </section>
+
+                <section class="info-section">
+                    <h2>LA VISIÓ</h2>
+                    <p><br><br>
+
+                        Mini Vita extreu la pintura i l’animació a una nova dimensió: permet als artistes crear no només
+                        el físic dels personatges,
+
+                        sinó també la seva ment, records i emocions. <br><br>
+                        Els personatges poden recordar la seva mare, la casa on van néixer i els seus primers amors,
+                        moments que mai han existit.<br><br>
+
+                        L’objectiu no és només observar, sinó sentir la desesperació del petit home atrapat, i explorar
+                        noves fronteres entre la tecnologia i l'art. <br><br>
+                        Mini Vita proposa una nova manera d’entendre la narrativa digital, més íntima, emocional i
+                        interactiva.
+                    </p>
+                </section>
+
+                <!-- Horizontal Image Gallery (Existing) -->
+                <!-- Kept as extra visual or can be removed if strictly replacing. Keeping for now based on user flow. -->
+                <section class="gallery-section">
+                    <div class="gallery-grid">
+                        <div class="gallery-item" style="background-image: url(assets/imatges/foto01.png);">
+                        </div>
+                        <div class="gallery-item" style="background-image: url(assets/imatges/foto02.png);">
+                        </div>
+                        <div class="gallery-item" style="background-image: url(assets/imatges/foto03.png);">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technology Section -->
+                <section class="info-section">
+                    <h2>Requisits tècnics:</h2>
+                    <p><br>
+                        • GPU NVIDIA amb mínim 8GB VRAM (compatible amb targetes domèstiques). <br><br>
+                        • Aplicació pròpia en Python + PyQt amb motor de render OpenGL / USD Hydra. <br><br>
+                        • Models locals, instal·lació local, temps real amb baixa latència. <br><br>
+                        • Models quantitzats per rendiment en hardware domèstic.
+                    </p>
+                </section>
+
+                <!-- Utilitats Section (Renamed from Objectives) -->
+                <section class="info-section">
+                    <h2>UTILITATS</h2>
+                    <div class="utilitats-grid">
+                        <div class="utilitats-item">
+                            <div class="utilitats-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop');">
+                            </div>
+                            <div class="utilitats-content">
+                                <h3>INTERACCIÓ TOTAL</h3>
+                                <p>Interactua, conversa i comparteix emocions amb l’usuari. <br> L’usuari pot influir en
+                                    Tom i experimentar la seva lluita per escapar. <br> </p>
+                            </div>
+                        </div>
+                        <div class="utilitats-item">
+                            <div class="utilitats-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2574&auto=format&fit=crop'); order: 2;">
+                            </div>
+                            <div class="utilitats-content">
+                                <h3>APLICACIÓ PRÒPIA</h3>
+                                <p>Aplicació pròpia aplicable a múltiples formats digitals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Footer -->
+                <section class="footer-contact">
+                    <div class="footer-contact-inner">
+                        <div class="footer-text">
+                            <h2 class="thank-you-msg">GRÀCIES</h2>
+                            <!-- Removed paragraph text for centered thank you -->
+                        </div>
+
+                        <div class="subtitle-main">
+                            PROJECTE DE: Daniel Casadevall Jauhiainen
+                            <br><br>
+                            Per més informació, podeu contactar a través del següent correu electrònic:
+                        </div>
+
+                        <div class="footer-email">
+                            <a href="#" class="email-link"></a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/deviceSet.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script>
+        const user = "dani.casadevall";
+        const domain = "gmail.com";
+        const email = user + "@" + domain;
+
+        document.querySelectorAll(".email-link").forEach(link => {
+            link.href = "mailto:" + email;
+            link.textContent = email;
+        });
+    </script>
+
+
+</body>
+
+</html>

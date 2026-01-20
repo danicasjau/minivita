@@ -1,0 +1,454 @@
+/* Professional Micro-Detailed Brutalist Style */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=JetBrains+Mono:wght@300;400&display=swap');
+
+.info-content-wrapper {
+    position: relative;
+    z-index: 2;
+    padding: 100px 5%;
+    max-width: 1000px;
+    /* Wide layout */
+    margin: 0 auto;
+    font-family: 'JetBrains Mono', monospace;
+    /* Tech/Detailed look */
+    color: #eee;
+
+}
+
+/* Sections */
+.info-section {
+    margin-bottom: 120px;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    /* Sidebar title layout */
+    gap: 60px;
+    align-items: start;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+/* Standard Section Layout */
+.info-section h2 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+    color: #fff;
+    opacity: 0.9;
+    position: sticky;
+    top: 20px;
+}
+
+.info-section p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 700px;
+    color: #ccc;
+    font-weight: 300;
+    margin: 0;
+    text-align: left;
+}
+
+/* Main Feature Image */
+.main-feature-image {
+    width: 100%;
+    height: 20vh;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-feature-image h1.main-feature-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Archivo', sans-serif;
+    font-size: 4rem;
+    line-height: 0.9;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    /*mix-blend-mode: overlay;*/
+    width: 100%;
+    color: #fff;
+    opacity: 0.85;
+}
+
+/* Detailed List (Objectives & Future) */
+.detailed-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.detailed-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #aaa;
+    transition: all 0.3s ease;
+}
+
+.detailed-list li:hover {
+    color: #fff;
+    padding-left: 10px;
+    border-bottom-color: rgba(255, 255, 255, 0.4);
+}
+
+.detailed-list li span.list-id {
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0.5;
+    margin-right: 20px;
+    min-width: 30px;
+}
+
+.detailed-list li span.list-content {
+    flex-grow: 1;
+}
+
+/* Gallery */
+.gallery-section {
+    margin-bottom: 150px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.gallery-item {
+    aspect-ratio: 9/16;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    z-index: 10;
+}
+
+/* Special Contact Section */
+.contact-container {
+    background-color: #000;
+    border: 1px solid #fff;
+    padding: 60px;
+    text-align: center;
+    margin-top: 100px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    /* Slight rounding on the brut container */
+    position: relative;
+    /* Ensure it stands out against transparent background */
+}
+
+.contact-container h2 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 40px 0;
+    letter-spacing: 0.1em;
+}
+
+.contact-socials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    background-color: #00ffff;
+    /* Cyber cyan accent */
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: #000;
+}
+
+.contact-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 20px;
+}
+
+.contact-email {
+    font-size: 0.8rem;
+    color: #888;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.contact-email:hover {
+    color: #fff;
+}
+
+
+/* Responsive adjustments handled in global block at bottom */
+
+/* Thank You Message */
+.thank-you-msg {
+    text-align: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #fff;
+    letter-spacing: 0.05em;
+    margin: 0;
+    text-transform: uppercase;
+    padding: 20px 0;
+}
+
+/* Utilitats Layout - Vertical Images */
+.utilitats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.utilitats-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 40px;
+}
+
+.utilitats-item:last-child {
+    border-bottom: none;
+}
+
+.utilitats-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.utilitats-item:hover .utilitats-image {
+    filter: grayscale(0%);
+}
+
+.utilitats-content h3 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0 0 15px 0;
+}
+
+.utilitats-content p {
+    color: #aaa;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* El Futur - Square with 3 Vertical Images */
+.futur-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    aspect-ratio: 1/1;
+    /* Square overall container if images fit */
+}
+
+.futur-item {
+    height: 100%;
+    /* Fill container height */
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+}
+
+.futur-item:hover {
+    transform: scale(0.95);
+}
+
+.futur-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, #000, transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.futur-item:hover .futur-overlay {
+    opacity: 1;
+}
+
+.futur-overlay span {
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* --- Perfect Layout Responsive Enhancements --- */
+
+/* Tablet (Portrait/Small Desktop) */
+@media (max-width: 1024px) {
+    .info-content-wrapper {
+        padding: 80px 5%;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .futur-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        aspect-ratio: auto;
+        /* Allow height to adapt */
+    }
+
+    .futur-item {
+        aspect-ratio: 1/1;
+        /* Maintain square items */
+    }
+
+    .main-feature-image h1.main-feature-title {
+        font-size: 3rem;
+    }
+}
+
+/* Mobile (Landscape/Large Phone) */
+@media (max-width: 768px) {
+    .info-content-wrapper {
+        padding: 60px 20px;
+    }
+
+    .info-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 80px;
+    }
+
+    .info-section h2 {
+        position: static;
+        width: 100%;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 1.3rem;
+    }
+
+    .info-section p {
+        font-size: 0.85rem;
+    }
+
+    /* Utilitats Stacking */
+    .utilitats-item {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .utilitats-image {
+        aspect-ratio: 16/9;
+        /* Wider on mobile */
+    }
+
+    .utilitats-item:nth-child(even) .utilitats-image {
+        order: -1;
+        /* Ensure image is always top on mobile */
+    }
+
+    .contact-container {
+        padding: 40px 20px;
+        margin-top: 60px;
+    }
+
+    .contact-container h2 {
+        font-size: 2rem;
+    }
+
+    .main-feature-image {
+        height: 30vh;
+        /* Taller on mobile relative to screen */
+        margin-bottom: 60px;
+    }
+
+    .main-feature-image h1.main-feature-title {
+        font-size: 2.2rem;
+    }
+
+    .thank-you-msg {
+        font-size: 1.8rem;
+    }
+}
+
+/* Mobile (Portrait/Small Phone) */
+@media (max-width: 480px) {
+
+    .gallery-grid,
+    .futur-gallery {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .gallery-section {
+        margin-bottom: 60px;
+    }
+
+    .contact-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+    }
+
+    .contact-socials {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .social-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .main-feature-image h1.main-feature-title {
+        font-size: 1.8rem;
+    }
+
+    .thank-you-msg {
+        font-size: 1.5rem;
+    }
+}

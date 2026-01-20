@@ -1,0 +1,594 @@
+/* CSS for Grid, Roadmap, Images and Transitions */
+
+@keyframes colorCycle {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.section-text {
+    text-align: left;
+    font-size: 1rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.5rem;
+    background: linear-gradient(to right, #fff, #aaa, #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+
+
+
+h3.section-title {
+    font-size: 2.8rem;
+    margin-top: 120px;
+    padding: 20px;
+    text-align: left;
+}
+
+.animated-gradient {
+    /* 2 distinct colors iterating slowly: Deep Purple <-> Neon Blue */
+    background: linear-gradient(45deg, #1cb5e0, #000046);
+    background-size: 200% 200%;
+    animation: colorCycle 6s ease-in-out infinite;
+}
+
+/* Utils Showcase (Right View) */
+.util-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+    width: 100%;
+    /* Wider container for impact */
+    /* Slight optical adjustment center */
+}
+
+.util-showcase-item {
+    position: relative;
+    height: 500px;
+    /* Big height */
+    border-radius: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+    cursor: default;
+
+}
+
+.util-showcase-item:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.util-showcase-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease;
+}
+
+.util-showcase-item h3 {
+    font-family: 'Archivo', sans-serif;
+    /* Consistent font */
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 10px 0;
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+.util-showcase-item p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.8;
+    transform: translateY(10px);
+    transition: transform 0.3s ease 0.05s, opacity 0.3s ease;
+}
+
+.util-showcase-item:hover h3,
+.util-showcase-item:hover p {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .util-showcase-grid {
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .util-showcase-grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+        margin-left: 0;
+    }
+}
+
+
+
+/* Roadmap Styles */
+/* Roadmap - Future View (Left) */
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 10px;
+    width: 100%;
+    /* Align right adjustment */
+    direction: ltr;
+    /* Ensure grid flows left to right even if parent is aligned right */
+}
+
+.roadmap-item {
+    position: relative;
+    height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+}
+
+.roadmap-item:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.roadmap-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: left;
+    /* Keep text left aligned inside card */
+}
+
+.phase-tag {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 5px 12px;
+    border-radius: 20px;
+    align-self: flex-start;
+    font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #00c6ff;
+}
+
+.roadmap-content h4 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.6rem;
+    margin: 0 0 10px 0;
+    color: #fff;
+    font-weight: 700;
+}
+
+.roadmap-content p {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Responsive Roadmap */
+@media (max-width: 1200px) {
+    .roadmap-grid {
+        width: 80vw;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .roadmap-grid {
+        width: 90vw;
+        grid-template-columns: 1fr;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .roadmap-grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .roadmap-item {
+        height: 350px;
+        min-width: 70vw;
+        flex-shrink: 0;
+    }
+
+    /* Specific Mobile Layout for Utils - Vertical Stack */
+    .util-showcase-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* 1 Column */
+        width: 100%;
+        /* Centered roughly */
+        gap: 20px;
+    }
+
+    .util-showcase-item {
+        height: 175px;
+        /* Smaller height for mobile */
+        min-width: auto;
+        /* Reset carousel width */
+        width: 100%;
+        flex-shrink: 1;
+    }
+
+    .util-showcase-item h3 {
+        font-size: 1.4rem;
+    }
+
+    .util-showcase-item p {
+        font-size: 0.4rem;
+    }
+}
+
+/* Content Blocks for Down View */
+.content-block {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.placeholder-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    background-position: center;
+}
+
+.gradient-1 {
+    background: linear-gradient(45deg, #1a2a6c, #b21f1f, #fdbb2d);
+}
+
+.gradient-2 {
+    background: linear-gradient(45deg, #000428, #004e92);
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 200px;
+    background: #111;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.video-placeholder:hover {
+    border-color: #666;
+}
+
+.play-button {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-button::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid white;
+    margin-left: 5px;
+}
+
+.objectives-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+.objectives-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #222;
+    color: #ccc;
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+}
+
+.objectives-list li::before {
+    content: '•';
+    color: #00c6ff;
+    margin-right: 10px;
+}
+
+/* Contact Section */
+.contact-section {
+    margin-top: 80px;
+    border-top: 1px solid #333;
+    padding-top: 40px;
+}
+
+.contact-section h3 {
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    font-size: 0.8rem;
+    color: #888;
+    margin: 5px 0;
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.social-links span {
+    font-size: 0.7rem;
+    border: 1px solid #444;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.social-links span:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Adjustments for Specific View Labels to handle overflow/sizing */
+#label-right .section-content {
+    /* Right view content usually aligned left relative to label center? */
+    /* .view-label is centered. transformX 100% means it starts at right edge of screen? */
+    /* No, transform: translate(-50%, -50%) centers it. */
+    /* #label-right has transform: translateX(100%). This pushes it Way off screen right. */
+    /* We want it visible when rotated. */
+    /* Just styling the inner content width/align */
+    text-align: left;
+}
+
+#label-left .section-content {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* Footer Contact */
+.footer-contact {
+    background: transparent;
+    padding: 4rem 1.5rem;
+}
+
+.footer-contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem;
+    background: #0f0f0f;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: grid;
+    gap: 3rem;
+}
+
+.footer-text h2 {
+    font-size: 1.4rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+}
+
+.footer-text p {
+    max-width: 520px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-links {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.social-link svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.social-link:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.footer-email {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-email a {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+}
+
+.footer-email a:hover {
+    text-decoration: underline;
+}
+
+
+/* Mobile Optimization */
+@media only screen and (max-width: 768px) {
+    .section-content {
+        width: 90%;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        /* Adjusted for mobile */
+        letter-spacing: 0.2rem;
+        line-height: 1.2;
+    }
+
+    h3.section-title {
+        font-size: 1.4rem;
+        margin-top: 60px;
+        /* Reduced margin */
+        padding-top: 0;
+    }
+
+    .subtitle-main {
+        font-size: 0.6rem;
+        margin-bottom: 20px;
+        letter-spacing: 0.2rem;
+    }
+
+    .section-text {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        text-align: center;
+        /* Center aligned as per user preference in base class */
+    }
+
+    /* Down View Specifics */
+    #scroll-container-down {
+        margin-top: 100vh;
+        width: 100%;
+        padding-bottom: 150px;
+    }
+
+    .content-block {
+        margin-bottom: 30px;
+    }
+
+    .placeholder-image,
+    .video-placeholder {
+        height: 150px;
+    }
+
+    /* Roadmap */
+    .roadmap-container {
+        align-items: center;
+        text-align: center;
+    }
+
+    .roadmap-step {
+        border-right: none;
+        border-bottom: 2px solid #333;
+        padding-right: 0;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        border-left: none;
+        /* Reset if any */
+    }
+
+    .roadmap-step::after {
+        right: 50%;
+        bottom: -6px;
+        /* Move dot to bottom */
+        top: auto;
+        transform: translateX(50%);
+    }
+
+    /* Utils Grid */
+    .utils-grid {
+        grid-template-columns: 1fr;
+        margin-left: 0;
+        margin-top: 20px;
+        gap: 15px;
+    }
+
+    /* Labels Positioning adjustments for smaller screens */
+    #label-left .section-content,
+    #label-right .section-content,
+    #label-up .section-content {
+        text-align: center;
+        align-items: center;
+        width: 90vw;
+        /* Ensure full viewport width usage */
+    }
+}
