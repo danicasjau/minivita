@@ -467,10 +467,6 @@ function onMove(x, y) {
 
             // Clamp
             relativeWheelOffset = Math.max(MIN_WHEEL_OFFSET - daddedMinMaxWhell, Math.min(MAX_WHEEL_OFFSET + daddedMinMaxWhell, relativeWheelOffset));
-            if (isMobile && absY > absX) {
-                relativeWheelOffset += dy * MOBILE_SCROLL_POWER;
-                return;
-            }
         }
 
         inputBlocked = true;
@@ -766,6 +762,7 @@ setTimeout(() => {
 }, 2000); // 2 seconds delay
 
 animate();
+
 
 
 
