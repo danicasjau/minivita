@@ -40,15 +40,15 @@ const MAX_SCROLL_PIXELS_DOWN = 500;
 const MAX_SCROLL_PIXELS_UP = 5400;
 const SCROLL_VALUE_CENTERED = 700;
 
-let mobileScrollVelocity = 8;
-const MOBILE_SCROLL_FRICTION = 0.94; // closer to 1 = longer glide
-const MOBILE_SCROLL_POWER = 1.2;     // finger strength
+let mobileScrollVelocity = 14;
+const MOBILE_SCROLL_FRICTION = 0.98; // closer to 1 = longer glide
+const MOBILE_SCROLL_POWER = 1.4;     // finger strength
 
 let daddedMinMaxWhell = 0;
 
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 if (isMobile) {
-    scrollMultiplier = Math.min(10, window.innerHeight / 120);
+    scrollMultiplier = Math.min(15, window.innerHeight / 120);
     daddedMinMaxWhell = 1000;
 
     // Performance / Speed optimizations for Mobile
@@ -786,6 +786,7 @@ setTimeout(() => {
 }, 2000); // 2 seconds delay
 
 animate();
+
 
 
 
