@@ -48,7 +48,7 @@ let daddedMinMaxWhell = 0;
 
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 if (isMobile) {
-    scrollMultiplier = Math.min(15, window.innerHeight / 120);
+    scrollMultiplier = Math.min(20, window.innerHeight / 120);
     daddedMinMaxWhell = 1000;
 
     // Performance / Speed optimizations for Mobile
@@ -762,6 +762,7 @@ setTimeout(() => {
 }, 2000); // 2 seconds delay
 
 animate();
+
 
 
 
