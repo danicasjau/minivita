@@ -724,7 +724,7 @@ function animate() {
 
     targetScrollY = Math.max(-MAX_SCROLL_PIXELS_UP - daddedMinMaxWhell, Math.min(MAX_SCROLL_PIXELS_DOWN, targetScrollY));
 
-    const lerpFactor = isMobile ? 0.3 : 0.1;
+    const lerpFactor = isMobile ? 0.5 : 0.12;
     currentScrollY += (targetScrollY - currentScrollY) * lerpFactor;
     currentScrollX += (targetScrollX - currentScrollX) * lerpFactor;
 
@@ -756,3 +756,4 @@ setTimeout(() => {
 }, 2000); // 2 seconds delay
 
 animate();
+
