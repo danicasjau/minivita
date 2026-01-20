@@ -40,11 +40,15 @@ const MAX_SCROLL_PIXELS_DOWN = 500;
 const MAX_SCROLL_PIXELS_UP = 5400;
 const SCROLL_VALUE_CENTERED = 700;
 
+let mobileScrollVelocity = 0;
+const MOBILE_SCROLL_FRICTION = 0.94; // closer to 1 = longer glide
+const MOBILE_SCROLL_POWER = 1.2;     // finger strength
+
 let daddedMinMaxWhell = 0;
 
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 if (isMobile) {
-    scrollMultiplier = Math.min(8, window.innerHeight / 120);
+    scrollMultiplier = Math.min(10, window.innerHeight / 120);
     daddedMinMaxWhell = 1000;
 
     // Performance / Speed optimizations for Mobile
@@ -426,6 +430,11 @@ function onMove(x, y) {
     const dy = y - startY;
     const threshold = 50;
 
+    if (isMobile && absY > absX) {
+        mobileScrollVelocity += dy * MOBILE_SCROLL_POWER;
+        return;
+    }
+    
     if (Math.abs(dx) > threshold || Math.abs(dy) > threshold) {
         const isHorizontal = Math.abs(dx) > Math.abs(dy);
         let rotated = false;
@@ -611,6 +620,27 @@ let introPlane = null; // Global reference for opacity animation
 function animate() {
     requestAnimationFrame(animate);
 
+    if (isMobile) {
+        mobileScrollVelocity *= MOBILE_SCROLL_FRICTION;
+    
+        if (Math.abs(mobileScrollVelocity) < 0.05) {
+            mobileScrollVelocity = 0;
+        }
+    
+        relativeWheelOffset += mobileScrollVelocity;
+    
+        // Soft clamp (prevents hard stop)
+        const limit = MAX_WHEEL_OFFSET + daddedMinMaxWhell;
+        if (relativeWheelOffset > limit) {
+            relativeWheelOffset = limit;
+            mobileScrollVelocity *= 0.3; // absorb energy
+        }
+        if (relativeWheelOffset < -limit) {
+            relativeWheelOffset = -limit;
+            mobileScrollVelocity *= 0.3;
+        }
+    }
+    
     time += 0.01;
 
     // Update Shader Uniforms
@@ -756,5 +786,6 @@ setTimeout(() => {
 }, 2000); // 2 seconds delay
 
 animate();
+
 
 
