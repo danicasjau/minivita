@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINI VITA // Entertainment Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&family=Syncopate:wght@700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        :root {
+            --white: #FFFFFF;
+            --soft-blue: #D1E8FF;
+            --black: #000000;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .noise::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+        }
+
+        .brutalist-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            border-radius: 24px;
+            box-shadow: 6px 6px 0px var(--black);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @media (min-width: 768px) {
+            .brutalist-card { border-width: 3px; border-radius: 40px; box-shadow: 12px 12px 0px var(--black); }
+        }
+
+        .massive-title {
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700;
+            line-height: 0.8;
+            letter-spacing: -0.06em;
+            text-transform: uppercase;
+        }
+
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 16px;
+            padding: 10px 4px;
+            scrollbar-width: none;
+        }
+
+        .carousel-container::-webkit-scrollbar { display: none; }
+
+        .carousel-item {
+            flex: 0 0 90%;
+            scroll-snap-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid black;
+            aspect-ratio: 16/9;
+        }
+
+        @media (min-width: 768px) {
+            .carousel-item { flex: 0 0 45%; border-width: 3px; }
+        }
+
+        .btn-brutal {
+            background: var(--soft-blue);
+            border: 2px solid var(--black);
+            border-radius: 12px;
+            box-shadow: 4px 4px 0px var(--black);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            transition: 0.2s;
+        }
+
+        .btn-brutal:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--black); }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #777;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .spec-item {
+            background: #000;
+            color: #D1E8FF;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .video-box {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #000;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 2px solid black;
+        }
+
+        @media print { .no-print { display: none !important; } }
+    </style>
+</head>
+<body class="noise">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/95 border-b-2 border-black no-print">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-black rounded-lg"></div>
+                <span class="text-xl font-black tracking-tighter">MINI VITA</span>
+            </div>
+            <div class="flex gap-3">
+
+                <button onclick="window.print()" class="btn-brutal px-4 py-1.5">PDF</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="max-w-6xl mx-auto px-4 pt-12 pb-16 md:pt-24 md:pb-32">
+        <h1 class="massive-title text-[14vw] md:text-[11rem] mb-6">
+            MINI<br><span class="text-blue-400">VITA</span>
+        </h1>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <p class="text-2xl md:text-5xl font-medium max-w-2xl leading-tight text-gray-900 tracking-tight">
+                La vida atrapada: PRESENTACIÓ D'UN PERSONATGE VIRTUAL
+            </p>
+            <div class="flex items-center gap-3 mono text-[10px] font-bold uppercase border-2 border-black px-4 py-2 rounded-xl bg-white shadow-[4px_4px_0px_black]">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                Daniel Casadevall
+            </div>
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-4 mb-16 md:mb-24">
+        <p class="text-lg md:text-4xl font-semibold leading-relaxed max-w-4xl border-l-4 border-black pl-6">
+
+
+Mini Vita és un personatge intel·ligent, amb capacitat per interactuar amb l’usuari. Té memòria pròpia, moviment fluid segons la conversa i interacciona amb l’entorn. Pot funcionar en un ordinador domèstic modern.
+        
+        </p>
+    </section>
+    <!-- Carousel Gallery -->
+    <section id="gallery" class="max-w-6xl mx-auto px-4 mb-32">
+        <div class="flex justify-between items-end mb-4">
+            <span class="section-label mb-0">Arxius Visuals</span>
+            <p class="mono text-[8px] opacity-30 uppercase">Swipe</p>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel-item"><img src="assets/imatges/foto01.png" class="w-full h-full object-cover opacity-90"></div>
+            <div class="carousel-item"><img src="assets/imatges/foto02.png" class="w-full h-full object-cover opacity-90"></div>
+            <div class="carousel-item"><img src="assets/imatges/foto03.png" class="w-full h-full object-cover opacity-90"></div>
+        </div>
+    </section>
+    <!-- Project Explanation -->
+    <section class="max-w-6xl mx-auto px-4 mb-16 md:mb-24">
+        <span class="section-label">DESCRIPCIÓ</span>
+        <p class="text-lg md:text-2xl font-semibold leading-relaxed max-w-4xl border-l-4 border-black pl-6">
+             Després de complir 35 anys, Tom es desperta en una capsa blanca, una habitació tancada, on només
+            hi ha una veu: la teva.<br><br>
+            Tom recorda tota la seva vida i vol escapar, tornar amb la seva família, però no pot. 
+            La seva existència, les seves memòries i emocions, només existeixen dins l’ordinador. <br><br>
+            Fora de la capsa, Tom no és ningú, no existeix, no pot existir. Però ell creu que sí, i farà
+            tot el possible per sortir.<br><br>
+            Pobre Tom.     
+        </p>
+    </section>
+
+    <!-- Technical Spec Matrix -->
+    <section class="max-w-6xl mx-auto px-4 mb-24 md:mb-40">
+        <span class="section-label">Requisits tècnics</span>
+        <div class="brutalist-card bg-black p-6 md:p-12 text-white overflow-hidden">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="spec-item">
+                    <span class="mono text-[8px] uppercase opacity-50 block mb-1">Arquitectura</span>
+                    <h3 class="text-xl md:text-2xl font-black">Multi-Modal LLM</h3>
+                </div>
+                <div class="spec-item">
+                    <span class="mono text-[8px] uppercase opacity-50 block mb-1">Compression</span>
+                    <h3 class="text-xl md:text-2xl font-black">FP16 Quant</h3>
+                </div>
+                <div class="spec-item">
+                    <span class="mono text-[8px] uppercase opacity-50 block mb-1">Memoria</span>
+                    <h3 class="text-xl md:text-2xl font-black">Vector DB</h3>
+                </div>
+                <div class="spec-item bg-blue-400 text-black border-none">
+                    <span class="mono text-[8px] uppercase opacity-40 block mb-1">Resposta</span>
+                    <h3 class="text-xl md:text-2xl font-black">&lt;34ms Sync</h3>
+                </div>
+                <div class="spec-item md:col-span-2">
+                    <span class="mono text-[8px] uppercase opacity-50 block mb-1">Hardware</span>
+                    <h3 class="text-xl md:text-2xl font-black">CPU / &lt;8GB VRAM</h3>
+                </div>
+                <div class="spec-item md:col-span-2">
+                    <span class="mono text-[8px] uppercase opacity-50 block mb-1">Execution</span>
+                    <h3 class="text-xl md:text-2xl font-black">Programa Local / Non-Cloud</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 mb-16 md:mb-24">
+        <span class="section-label">VISIÓ</span>
+        <p class="text-lg md:text-2xl font-semibold leading-relaxed max-w-4xl border-l-4 border-black pl-6">
+                        Mini Vita extreu la pintura i l’animació a una nova dimensió: permet als artistes crear no només el aspectes físics dels personatges, sinó també definir la seva ment, records i emocions.
+                        
+                        <br><br>
+                        Els personatges poden recordar la seva mare, la casa on van néixer i els seus primers amors,
+                        moments que mai han existit.<br><br>
+
+                        L’objectiu no és només observar, sinó sentir la desesperació del petit home atrapat, i explorar
+                        noves fronteres entre la tecnologia i l'art. <br><br>
+                        Mini Vita proposa una nova manera d’entendre la narrativa digital, més íntima, emocional i
+                        interactiva.</p>
+    </section>
+
+    <section id="demos" class="max-w-6xl mx-auto px-4 mb-32">
+        <span class="section-label">VERSIONS</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid md:grid-cols-1 gap-3">
+                    <div class="video-box" style="min-height: 400px;">
+                        <video src="assets/imatges/videoVersio01.mp4" autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover"></video>
+                        <div class="absolute inset-0 flex justify-center mono text-[14px] " style="padding: 20px;">Versió 01</div>
+                    </div>
+                    <div class="p-2">
+                        <p class="text-xs"><br>Funcionament local a temps real, moviment poc estable, memòria no implementada, veu poc
+                            precisa.</p>
+                    </div>
+                </div>
+            <div class="grid md:grid-cols-1 gap-3">
+                <div class="video-box" style="min-height: 400px;">  
+                    <video src="assets/imatges/videoVersio02.mp4" autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover"></video>
+                    <div class="absolute inset-0 flex justify-center mono text-[14px] text-white " style="padding: 20px;">Versió 02</div>
+                </div>
+                <div class="p-2">
+                        <p class="text-xs"><br>Memòria implementada, veu més precisa, moviment estable. Sense interacció amb l'entorn 3D.</p>
+                    </div>
+            </div>
+
+                            <div class="grid md:grid-cols-1 gap-3">
+            <div class="video-box" style="min-height: 400px;">
+                <video src="/videos/neural.mp4" autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover"></video>
+                <div class="absolute inset-0 flex justify-center mono text-[14px]  text-white" style="padding: 20px;">Versió 03 en DESENVOLUPAMENT</div>
+            </div>
+                                <div class="p-2">
+                        <p class="text-xs"><br>La versió 03 de Mini Vita està en desenvolupament.</p>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 mb-16 md:mb-24">
+        <span class="section-label">Minivita en context d'exhibició</span>
+        <p class="text-lg md:text-2xl font-semibold leading-relaxed max-w-4xl border-l-4 border-black pl-6">
+            En no tractar-se d’un vídeo, sinó d’un programa interactiu, s'ha d'exhibir executant el programa en un ordinador en temps real, perquè els usuaris puguin interactuar amb el personatge.
+                </p>
+    </section>
+    <!-- Future Utility -->
+    <section id="future" class="max-w-6xl mx-auto px-4 mb-32">
+        <span class="section-label">QUALITATS DELS PERSONATGES</span>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-1 gap-3">
+                <div class="brutalist-card p-8 bg-white flex flex-col justify-between min-h-[220px]" style="background-image: url(assets/imatges/fotoHistoria.png); background-size: cover;">
+                </div>
+                <div class="p-7">
+                    <h4 class="font-black text-xl uppercase leading-none">IDENTITAT</h4>
+                    <p class="text-xs"><br>Personatges amb identitat única, records, memòries i aprenentatge continu.</p>
+                </div>
+
+            </div>
+            <div class="grid md:grid-cols-1 gap-3">
+                <div class="brutalist-card p-8 bg-white flex flex-col justify-between min-h-[220px]" style="background-image: url(assets/imatges/fotoPensament.png); background-size: cover;">
+                </div>
+                                <div class="p-7">
+                <h4 class="font-black text-xl uppercase leading-none">INTEL·LIGÈNCIA</h4>
+                <p class="text-xs"><br>Personatges amb raonament complex i adaptació contextual en temps real per a entorns
+                            dinàmics.</p>
+                                            </div>
+            </div>
+                        <div class="grid md:grid-cols-1 gap-3">
+                <div class="brutalist-card p-8 bg-white flex flex-col justify-between min-h-[220px]" style="background-image: url(assets/imatges/fotoMoviment.png); background-size: cover;">
+                </div>
+                                <div class="p-7">
+                <h4 class="font-black text-xl uppercase leading-none">MOVIMENT</h4>
+                <p class="text-xs"><br>Moviment fluid i realista, amb animacions facials i corporals complexes enquadrades amb la
+                            veu i l'espai.</p>
+                                            </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Conceptual Architecture Diagram - Horizontal -->
+<section class="max-w-6xl mx-auto px-4 mb-32">
+    <span class="section-label">ARQUITECTURA CONCEPTUAL</span>
+
+    <div class="brutalist-card p-8 md:p-16 bg-white overflow-x-auto">
+        <!-- Diagram -->
+        <div class="flex items-center gap-6 min-w-[200px]">
+
+            <!-- PERCEPTION -->
+            <div class="flex flex-col items-center gap-4 border-2 border-black rounded-2xl p-6 min-w-[240px]">
+                <h3 class="font-black text-xl uppercase">Percepció</h3>
+
+                <div class="w-full border border-black rounded-xl p-3 text-center text-sm mono">
+                    Environment
+                </div>
+                <div class="w-full border border-black rounded-xl p-3 text-center text-sm mono">
+                    Vision
+                </div>
+                <div class="w-full border border-black rounded-xl p-3 text-center text-sm mono">
+                    User Voice
+                </div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="mono text-2xl">→</div>
+
+            <!-- REASONING -->
+            <div class="flex flex-col items-center justify-center border-2 border-black rounded-2xl p-8 min-w-[200px]">
+                <h3 class="font-black text-xl uppercase mb-2">Raonament</h3>
+                <p class="mono text-xs opacity-60 text-center">
+                    Context · Associació · Intenció
+                </p>
+            </div>
+
+            <!-- Arrow -->
+            <div class="mono text-2xl">→</div>
+
+            <!-- MEMORY -->
+            <div class="flex flex-col items-center justify-center border-2 border-black rounded-2xl p-8 min-w-[200px] bg-black text-white">
+                <h3 class="font-black text-xl uppercase mb-2">Memòria personal</h3>
+                <p class="mono text-xs opacity-60 text-center">
+                    Records · Emocions · Experiències
+                </p>
+            </div>
+
+            <!-- Arrow -->
+            <div class="mono text-2xl">→</div>
+
+            <!-- OUTPUTS -->
+            <div class="flex flex-col gap-4 min-w-[180px]">
+
+                <div class="border-2 border-black rounded-2xl p-6 bg-blue-400 text-center">
+                    <h3 class="font-black text-lg uppercase">Paraula</h3>
+                    <p class="mono text-xs opacity-70">(veu / llenguatge)</p>
+                </div>
+
+                <div class="border-2 border-black rounded-2xl p-6 text-center">
+                    <h3 class="font-black text-lg uppercase">Acció</h3>
+                    <p class="mono text-xs opacity-70">(moviment)</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+    <section class="max-w-6xl mx-auto px-4 mb-16 md:mb-24">
+        <span class="section-label">OBJECTIU</span>
+        <p class="text-lg md:text-2xl font-semibold leading-relaxed max-w-4xl border-l-4 border-black pl-6">
+            Tot consisteix a trobar una manera d’expressar l’ésser humà en totes les seves qualitats.
+        </p>
+    </section>
+
+        <!-- Academic References -->
+    <section class="max-w-6xl mx-auto px-4 mb-24">
+        <span class="font-black text-xl uppercase leading-none">Projecte en desenvolupament...</span>
+    </section>
+
+
+    <!-- Academic References -->
+    <section class="max-w-6xl mx-auto px-4 mb-24">
+        <span class="section-label">GitHub Reference Documents</span>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="p-4 border-2 border-black bg-soft-blue/20 rounded-xl">
+                <p class="text-[10px] font-bold italic mb-1">MoMask: Generative Masked Modeling of 3D Human Motions, 2023</p>
+                <a href="#" class="text-[9px] mono underline text-blue-600">Download Paper</a>
+            </div>
+            <div class="p-4 border-2 border-black bg-soft-blue/20 rounded-xl">
+                <p class="text-[10px] font-bold italic mb-1">MaskControl: Spatio-Temporal Control for Masked Motion Synthesis, 2025.</p>
+                <a href="#" class="text-[9px] mono underline text-blue-600">Access Document</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unified Contact -->
+    <section id="contact" class="max-w-6xl mx-auto px-4 mb-40">
+        <div class="brutalist-card bg-black text-white p-8 md:p-20 relative overflow-hidden">
+            <h2 class="text-5xl md:text-8xl font-black mb-8 leading-none tracking-tighter">Contacte.</h2>
+            <div class="max-w-xl mb-12">
+                <p class="text-sm md:text-xl font-medium opacity-60">
+                    Per més informació, podeu contactar a través del següent correu electrònic:
+                </p>
+            </div>
+            <div class="footer-email">
+                <a href="#" class="email-link"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Bottom Bar -->
+    <footer class="bg-white border-t-2 border-black py-16 px-4 no-print">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-3xl font-black mb-1">MINI VITA.</h3>
+                        <p class="mono text-[8px] opacity-40 uppercase tracking-widest">Protocol_X88 // Autonomous Presence</p>
+                                                <p class="mono text-[12px] opacity-80 uppercase tracking-widest">Daniel Casadevall Jauhiainen</p>
+                    </div>
+
+                </div>
+                <div class="grid grid-cols-2 gap-x-12 gap-y-3 text-[9px] font-bold uppercase tracking-widest">
+                    <a href="#" class="hover:underline text-gray-500">Copyright © 2025</a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center border-t border-black/10 pt-8 opacity-40 mono text-[9px] uppercase font-bold text-center md:text-left">
+                <p>Project Minivita Systems Architecture. All Logic Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+    <script>
+        const user = "dani.casadevall";
+        const domain = "gmail.com";
+        const email = user + "@" + domain;
+
+        document.querySelectorAll(".email-link").forEach(link => {
+            link.href = "mailto:" + email;
+            link.textContent = email;
+        });
+    </script>
